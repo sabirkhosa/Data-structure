@@ -43,7 +43,7 @@ class SinglyCircularLinkList{
         node *get_head(){
         	return head;
 		}
-
+/*
         void print(){
             node* iter = head;
             if (head == NULL) return;
@@ -55,7 +55,30 @@ class SinglyCircularLinkList{
             cout<<endl;
 
         }
+*/
 
+		void print(SinglyCircularLinkList Ring,node* head){
+			node* itera=head;
+			if(itera==NULL){
+				return;
+			}
+			else{
+				//cout<<itera->data;
+				if(itera->next==Ring.get_head()){
+					cout<<itera->data<<endl;
+					return;
+				
+				}
+				cout<<itera->data;
+				print(Ring,head->next);
+				cout<<itera->data;
+			}
+		//	cout<<itera->data;
+		}
+		
+		
+		
+		
         node* search_node(char key){
             node* iter = head;
             while(iter->data !=key){
@@ -149,7 +172,7 @@ int main(){
     Ring.add_node_to_tail('y');
     Ring.add_node_to_tail('o');
     Ring.add_node_to_tail('u');
-   // Ring.print();
+    Ring.print(Ring,Ring.get_head());
     Ring.count();
     return 0;
 
